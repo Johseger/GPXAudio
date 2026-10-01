@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f3ed">
+  <title>Riktning — följ spåret med ljud</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+    :root{--paper:#f4f3ed;--ink:#202522;--muted:#797d75;--line:#dedfd6;--green:#306d4a;--lime:#d1ed75;--white:#fffefa;--orange:#e5a56f}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased}button,input{font:inherit}button{cursor:pointer}.shell{max-width:1120px;padding:0 56px;margin:auto}.topbar{height:78px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:11px;font:800 17px Manrope,sans-serif;letter-spacing:-.7px}.brandmark{height:29px;width:29px;border-radius:50%;background:var(--green);display:grid;place-items:center;color:var(--lime)}.brandmark svg{width:16px}.topnote{font:11px 'DM Mono',monospace;color:var(--muted);letter-spacing:.5px;text-transform:uppercase}.layout{display:grid;grid-template-columns:minmax(0,1.03fr) minmax(340px,.8fr);gap:76px;padding:66px 0 80px;align-items:start}.eyebrow{display:flex;align-items:center;gap:9px;font:11px 'DM Mono',monospace;letter-spacing:1.3px;text-transform:uppercase;color:var(--green)}.eyebrow:before{content:'';width:21px;height:1px;background:var(--green)}h1{font:500 clamp(43px,5.2vw,66px)/1.05 Manrope,sans-serif;letter-spacing:-3.4px;margin:21px 0 17px;max-width:530px}h1 em{font-family:Georgia,serif;font-weight:400;color:var(--green)}.intro{font-size:15px;line-height:1.75;color:#686d65;max-width:440px;margin:0 0 32px}.upload{background:var(--white);border:1px dashed #b6bcb0;border-radius:12px;min-height:114px;display:flex;align-items:center;padding:20px 22px;gap:17px;transition:.2s}.upload:hover,.upload.drag{border-color:var(--green);background:#f9faef}.upload-icon{height:44px;width:44px;flex:none;border-radius:50%;background:#eef2e7;color:var(--green);display:grid;place-items:center}.upload-icon svg{width:20px}.upload-copy{flex:1}.upload-copy strong{display:block;font-size:13px;font-weight:600;margin-bottom:5px}.upload-copy span{font-size:11px;color:var(--muted)}.upload-btn{border:1px solid var(--line);border-radius:6px;background:#fffefa;padding:9px 12px;font-size:11px;font-weight:600;color:var(--ink);white-space:nowrap}.upload input{display:none}.route-info{display:none;align-items:center;gap:9px;margin:13px 2px 0;color:var(--green);font-size:12px}.route-info.show{display:flex}.route-info .dot{height:7px;width:7px;border-radius:50%;background:var(--green)}.features{display:grid;grid-template-columns:1fr 1fr;gap:20px 24px;margin-top:34px}.feature{display:flex;gap:11px;align-items:flex-start}.feature-icon{width:30px;height:30px;flex:none;border-radius:50%;display:grid;place-items:center;background:#e8eadd;color:var(--green)}.feature-icon svg{width:15px;height:15px}.feature strong{display:block;font-size:11px;margin:1px 0 4px}.feature span{font-size:10px;color:var(--muted);line-height:1.5}.visual{padding-top:2px}.map-card{background:#e8e9df;border-radius:13px;height:334px;position:relative;overflow:hidden;border:1px solid #dfe1d6}.map-card svg{position:absolute;inset:0;width:100%;height:100%}.map-caption{position:absolute;left:15px;top:14px;padding:8px 10px;border-radius:4px;background:rgba(255,254,250,.88);font:9px 'DM Mono',monospace;color:#73796e;letter-spacing:.4px}.map-scale{position:absolute;bottom:16px;right:16px;color:#666c62;font:9px 'DM Mono',monospace}.map-route{stroke:var(--green);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;fill:none;stroke-dasharray:6 5;filter:drop-shadow(0px 1px 1px #fff)}.map-pulse{fill:var(--green);opacity:.12;animation:pulse 2.5s infinite}.map-user{fill:var(--green);stroke:#fffefa;stroke-width:3}.map-start{fill:var(--lime);stroke:var(--green);stroke-width:2}.map-end{fill:#fffefa;stroke:var(--green);stroke-width:2}@keyframes pulse{50%{r:20;opacity:.04}}.sound-card{margin-top:14px;background:var(--white);border:1px solid var(--line);border-radius:10px;padding:17px 19px 16px}.sound-top{display:flex;justify-content:space-between;align-items:center}.sound-label{font:10px 'DM Mono',monospace;letter-spacing:.7px;text-transform:uppercase;color:#73796e}.sound-state{font-size:10px;color:var(--muted);display:flex;gap:6px;align-items:center}.sound-state i{width:6px;height:6px;border-radius:50%;background:#b8bcb4}.sound-state.active i{background:#69a26f;box-shadow:0 0 0 3px #e6efe2}.pan{height:39px;position:relative;display:flex;align-items:center;margin-top:7px}.pan-line{height:1px;width:100%;background:#e4e5dc}.pan-center{height:17px;width:1px;background:#c6c9bf;position:absolute;left:50%}.pan-dot{width:12px;height:12px;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border:2px solid var(--white);box-shadow:0 0 0 1px var(--green);background:var(--green);border-radius:50%;transition:left .25s ease}.pan-ends{display:flex;justify-content:space-between;font:9px 'DM Mono',monospace;color:#858a80;margin-top:-2px}.controls{display:flex;align-items:center;gap:11px;margin-top:17px}.start-btn{flex:1;border:0;border-radius:6px;height:44px;background:var(--green);color:#fff;font-size:12px;font-weight:600;transition:.2s}.start-btn:hover{background:#24583b}.start-btn:disabled{opacity:.42;cursor:not-allowed}.stop-btn{display:none;border:1px solid var(--line);border-radius:6px;background:var(--white);height:44px;width:47px;color:#686d65}.stop-btn.show{display:block}.hint{font-size:10px;line-height:1.55;color:var(--muted)}.footnote{font-size:10px;color:#898d85;line-height:1.6;margin-top:12px}.notice{display:none;margin-top:13px;padding:11px 13px;background:#fbf1e6;border-radius:6px;color:#815829;font-size:11px;line-height:1.5}.notice.show{display:block}.progress{margin-top:14px;display:none}.progress.show{display:block}.progress-row{display:flex;justify-content:space-between;font:10px 'DM Mono',monospace;color:#687064;margin-bottom:7px}.progress-track{height:3px;background:#e6e7df;border-radius:5px;overflow:hidden}.progress-fill{height:100%;width:0;background:var(--green);transition:width .5s}
+    @media(max-width:760px){.shell{padding:0 22px}.topbar{height:64px}.topnote{font-size:9px}.layout{grid-template-columns:1fr;gap:34px;padding:43px 0 45px}.visual{grid-row:1}.map-card{height:265px}h1{font-size:49px;letter-spacing:-2.6px;margin-top:16px}.intro{font-size:14px;margin-bottom:24px}.features{margin-top:28px}.map-caption{top:11px;left:11px}.sound-card{padding:15px}.upload{padding:16px;gap:12px}.upload-btn{padding:9px}.upload-icon{width:39px;height:39px}}
+    @media(max-width:380px){.shell{padding:0 16px}.topnote{display:none}.features{gap:18px 12px}.feature{gap:8px}.map-card{height:230px}.upload-copy strong{font-size:12px}.upload-copy span{font-size:10px}.upload-btn{font-size:10px;padding:8px}}
+  </style>
+</head>
+<body>
+  <header class="shell topbar">
+    <div class="brand"><span class="brandmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 18c4-1 4-11 9-12s5 4 5 4"/><circle cx="5" cy="18" r="1.5" fill="currentColor"/><path d="m16 10 3 1 1-3"/></svg></span>riktning</div>
+    <div class="topnote">Gå din egen väg</div>
+  </header>
+  <main class="shell layout">
+    <section>
+      <div class="eyebrow">Ljudnavigering för dina steg</div>
+      <h1>Hitta rätt.<br>Med <em>öronen.</em></h1>
+      <p class="intro">Ladda upp ett GPX-spår och följ det med GPS och stereoljud. Lyssna efter mitten — ljudet flyttar sig åt det håll du behöver gå.</p>
+      <label class="upload" id="dropzone">
+        <input id="fileInput" type="file" accept=".gpx,application/gpx+xml,application/xml,text/xml">
+        <span class="upload-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V4m-4 4 4-4 4 4M5 14v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"/></svg></span>
+        <span class="upload-copy"><strong id="uploadTitle">Välj ditt GPX-spår</strong><span id="uploadSub">Dra hit en fil eller bläddra</span></span>
+        <span class="upload-btn">Välj fil</span>
+      </label>
+      <div class="route-info" id="routeInfo"><span class="dot"></span><span id="routeSummary"></span></div>
+      <div class="features">
+        <div class="feature"><span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-5.1 7-12A7 7 0 1 0 5 9c0 6.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.2"/></svg></span><span><strong>Din position</strong><span>GPS visar hur du ligger till</span></span></div>
+        <div class="feature"><span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 9v6h4l5 4V5L7 9H3Z"/><path d="M16 9a5 5 0 0 1 0 6m3-9a9 9 0 0 1 0 12"/></svg></span><span><strong>Stereoljud</strong><span>Hör vilket håll du ska åt</span></span></div>
+        <div class="feature"><span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg></span><span><strong>Reagerar direkt</strong><span>Uppdateras medan du går</span></span></div>
+        <div class="feature"><span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="8.5"/></svg></span><span><strong>Enkelt att följa</strong><span>Mitten betyder att du är rätt</span></span></div>
+      </div>
+    </section>
+    <section class="visual" aria-label="Rutt och ljudstatus">
+      <div class="map-card">
+        <svg viewBox="0 0 480 334" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="480" height="334" fill="#e9eadf"/>
+          <path d="M-20 78Q68 94 120 52T241 62Q296 71 340 31T504 47M-12 256Q45 207 127 234t137 10q74-4 105-48t129-35M42 342q35-53 83-62t73-67q22-48 75-55t89-58q30-39 92-49" fill="none" stroke="#f7f6ef" stroke-width="18"/>
+          <path d="M0 127q64 29 107-3t86 14q30 36 82 17t70-59q23-39 78-38M170 334q-5-52 25-93t19-83q-5-42 25-63t66-18" fill="none" stroke="#d6d9cd" stroke-width="1.2"/>
+          <path d="M14 22 156 121 275 94 395 174 467 137M52 308 129 251 225 263 307 213 404 229 471 193" fill="none" stroke="#dbddcf" stroke-width="1"/>
+          <g fill="#bbc8ae" opacity=".7"><circle cx="54" cy="62" r="3"/><circle cx="68" cy="69" r="4"/><circle cx="80" cy="60" r="3"/><circle cx="390" cy="72" r="4"/><circle cx="404" cy="62" r="3"/><circle cx="419" cy="68" r="3"/><circle cx="90" cy="279" r="4"/><circle cx="104" cy="287" r="3"/><circle cx="115" cy="276" r="3"/><circle cx="357" cy="284" r="4"/><circle cx="370" cy="275" r="3"/><circle cx="383" cy="286" r="4"/></g>
+          <path id="mapRoute" class="map-route" d="M91 248 C116 225 118 195 148 182 S201 192 219 156 237 112 271 117 320 135 339 99 360 74 390 76"/>
+          <circle id="mapPulse" class="map-pulse" cx="220" cy="155" r="13"/><circle id="mapUser" class="map-user" cx="220" cy="155" r="5"/>
+          <circle class="map-start" cx="91" cy="248" r="5"/><circle class="map-end" cx="390" cy="76" r="5"/>
+        </svg>
+        <span class="map-caption" id="mapCaption">EXEMPEL PÅ RUTT</span><span class="map-scale">GPS · STEREO</span>
+      </div>
+      <div class="sound-card">
+        <div class="sound-top"><span class="sound-label">Ljudets riktning</span><span id="soundState" class="sound-state"><i></i><span>Väntar på rutt</span></span></div>
+        <div class="pan"><div class="pan-line"></div><div class="pan-center"></div><div id="panDot" class="pan-dot"></div></div>
+        <div class="pan-ends"><span>VÄNSTER</span><span>MITTEN</span><span>HÖGER</span></div>
+        <div class="progress" id="progress"><div class="progress-row"><span>DIN POSITION</span><span id="distanceLabel">–</span></div><div class="progress-track"><div id="progressFill" class="progress-fill"></div></div></div>
+        <div class="controls"><button id="startBtn" class="start-btn" disabled>Välj en rutt för att börja</button><button id="stopBtn" class="stop-btn" aria-label="Stoppa GPS" title="Stoppa">Ⅱ</button></div>
+        <div class="notice" id="notice" role="status"></div>
+        <div class="footnote">Använd hörlurar. GPS fungerar bäst utomhus. Platsdata stannar i din enhet. Kräver HTTPS på mobilen.</div>
+      </div>
+    </section>
+  </main>
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const fileInput = $('fileInput'), dropzone = $('dropzone');
+  let route = [], watchId = null, audioCtx = null, oscillator = null, gain = null, panNode = null;
+  const R = 6371008.8;
+  const fmtDistance = m => m >= 1000 ? `${(m/1000).toFixed(1).replace('.', ',')} km` : `${Math.round(m)} m`;
+  function showNotice(text){$('notice').textContent=text;$('notice').classList.add('show')}
+  function hideNotice(){$('notice').classList.remove('show')}
+  function setState(text, active=false){$('soundState').classList.toggle('active',active);$('soundState').querySelector('span').textContent=text}
+  function distance(a,b){const p1=a.lat*Math.PI/180,p2=b.lat*Math.PI/180,dp=(b.lat-a.lat)*Math.PI/180,dl=(b.lon-a.lon)*Math.PI/180;const h=Math.sin(dp/2)**2+Math.cos(p1)*Math.cos(p2)*Math.sin(dl/2)**2;return 2*R*Math.atan2(Math.sqrt(h),Math.sqrt(1-h))}
+  function nearestOnSegment(p,a,b){
+    const lat0=(a.lat+b.lat+p.lat)/3*Math.PI/180, mx=111320*Math.cos(lat0), my=110540;
+    const bx=(b.lon-a.lon)*mx, by=(b.lat-a.lat)*my, px=(p.lon-a.lon)*mx, py=(p.lat-a.lat)*my;
+    const len2=bx*bx+by*by, t=len2?Math.max(0,Math.min(1,(px*bx+py*by)/len2)):0;
+    const cx=a.lon+(b.lon-a.lon)*t, cy=a.lat+(b.lat-a.lat)*t;
+    const cross=bx*py-by*px;
+    return {point:{lat:cy,lon:cx},dist:distance(p,{lat:cy,lon:cx}),cross,t};
+  }
+  function updatePan(value){const x=Math.max(-1,Math.min(1,value));$('panDot').style.left=`${50+x*43}%`;if(panNode&&audioCtx){panNode.pan.setTargetAtTime(x,audioCtx.currentTime,.12);gain.gain.setTargetAtTime(.045,audioCtx.currentTime,.2)}}
+  function project(lat,lon,bounds,w,h,pad=30){const mid=(bounds.minLat+bounds.maxLat)/2*Math.PI/180;const x=(lon-bounds.minLon)*Math.cos(mid), y=lat-bounds.minLat, sx=(w-2*pad)/(bounds.maxLon-bounds.minLon||1)*Math.cos(mid), sy=(h-2*pad)/(bounds.maxLat-bounds.minLat||1);const scale=Math.min((w-2*pad)/(bounds.maxLon-bounds.minLon||1)/Math.max(.1,Math.cos(mid)),(h-2*pad)/(bounds.maxLat-bounds.minLat||1));const actualX=pad+(lon-bounds.minLon)*Math.cos(mid)*scale;return [actualX,h-pad-(lat-bounds.minLat)*scale]}
+  function drawRoute(){
+    if(route.length<2)return;const svg=$('mapRoute').ownerSVGElement, vb=svg.viewBox.baseVal, w=vb.width,h=vb.height;
+    const bounds={minLat:Math.min(...route.map(p=>p.lat)),maxLat:Math.max(...route.map(p=>p.lat)),minLon:Math.min(...route.map(p=>p.lon)),maxLon:Math.max(...route.map(p=>p.lon))};
+    const center=(bounds.minLat+bounds.maxLat)/2*Math.PI/180, lonSpan=(bounds.maxLon-bounds.minLon)*Math.max(.1,Math.cos(center)), latSpan=bounds.maxLat-bounds.minLat;
+    const scale=Math.min((w-80)/(lonSpan||.00001),(h-80)/(latSpan||.00001));
+    const pt=p=>[w/2+(p.lon-(bounds.minLon+bounds.maxLon)/2)*Math.cos(center)*scale,h/2-(p.lat-(bounds.minLat+bounds.maxLat)/2)*scale];
+    const coords=route.map(pt), d=coords.map((p,i)=>`${i?'L':'M'} ${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join(' ');$('mapRoute').setAttribute('d',d);
+    const [sx,sy]=coords[0],[ex,ey]=coords.at(-1);$('mapStart')?.setAttribute('cx',sx);
+    document.querySelector('.map-start').setAttribute('cx',sx);document.querySelector('.map-start').setAttribute('cy',sy);document.querySelector('.map-end').setAttribute('cx',ex);document.querySelector('.map-end').setAttribute('cy',ey);
+    $('mapUser').setAttribute('cx',coords[0][0]);$('mapUser').setAttribute('cy',coords[0][1]);$('mapPulse').setAttribute('cx',coords[0][0]);$('mapPulse').setAttribute('cy',coords[0][1]);
+  }
+  function parseGPX(text){
+    const xml=new DOMParser().parseFromString(text,'application/xml');if(xml.querySelector('parsererror'))throw Error('Filen gick inte att läsa som GPX.');
+    const trackPts=[...xml.getElementsByTagNameNS('*','trkpt')];
+    const pts=trackPts.length?trackPts:[...xml.getElementsByTagNameNS('*','rtept')];
+    const clean=pts.map(el=>({lat:Number(el.getAttribute('lat')),lon:Number(el.getAttribute('lon'))})).filter(p=>Number.isFinite(p.lat)&&Number.isFinite(p.lon)&&Math.abs(p.lat)<=90&&Math.abs(p.lon)<=180);
+    if(clean.length<2)throw Error('GPX-filen behöver innehålla minst två giltiga ruttpunkter.');
+    return clean;
+  }
+  function loadFile(file){if(!file)return;hideNotice();if(!/\.gpx$/i.test(file.name)){showNotice('Välj en fil med ändelsen .gpx.');return}const reader=new FileReader();reader.onerror=()=>showNotice('Filen kunde inte läsas.');reader.onload=()=>{try{route=parseGPX(reader.result);let total=0;for(let i=1;i<route.length;i++)total+=distance(route[i-1],route[i]);$('uploadTitle').textContent=file.name;$('uploadSub').textContent=`${route.length.toLocaleString('sv-SE')} ruttpunkter`;$('routeInfo').classList.add('show');$('routeSummary').textContent=`${fmtDistance(total)} · ${route.length.toLocaleString('sv-SE')} punkter`;$('startBtn').disabled=false;$('startBtn').textContent='Börja följa rutten';$('mapCaption').textContent='DIN UPPLADDADE RUTT';$('progress').classList.add('show');drawRoute();setState('Redo när du är');}catch(e){showNotice(e.message)}};reader.readAsText(file)}
+  fileInput.addEventListener('change',e=>loadFile(e.target.files[0]));
+  dropzone.addEventListener('dragover',e=>{e.preventDefault();dropzone.classList.add('drag')});dropzone.addEventListener('dragleave',()=>dropzone.classList.remove('drag'));dropzone.addEventListener('drop',e=>{e.preventDefault();dropzone.classList.remove('drag');loadFile(e.dataTransfer.files[0])});
+  function startAudio(){const Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)throw Error('Webbläsaren saknar stöd för ljud. Prova en nyare mobilwebbläsare.');audioCtx=new Ctx();oscillator=audioCtx.createOscillator();gain=audioCtx.createGain();if(audioCtx.createStereoPanner){panNode=audioCtx.createStereoPanner();oscillator.connect(gain).connect(panNode).connect(audioCtx.destination)}else{const splitter=audioCtx.createChannelSplitter(2),merger=audioCtx.createChannelMerger(2),left=audioCtx.createGain(),right=audioCtx.createGain();panNode={pan:{setTargetAtTime(v){left.gain.setTargetAtTime(Math.sqrt((1-v)/2),audioCtx.currentTime,.12);right.gain.setTargetAtTime(Math.sqrt((1+v)/2),audioCtx.currentTime,.12)}}};oscillator.connect(gain).connect(splitter);splitter.connect(left,0);splitter.connect(right,0);left.connect(merger,0,0);right.connect(merger,0,1);merger.connect(audioCtx.destination)}oscillator.type='sine';oscillator.frequency.value=440;gain.gain.value=.045;oscillator.start()}
+  function start(){hideNotice();if(!route.length)return;if(!navigator.geolocation){showNotice('Den här webbläsaren stöder inte GPS.');return}if(!window.isSecureContext&&location.hostname!=='localhost'){showNotice('GPS kräver en säker HTTPS-anslutning. Öppna sidan via HTTPS på mobilen.');return}try{startAudio()}catch(e){showNotice(e.message);return}if(audioCtx.state==='suspended')audioCtx.resume();if(!navigator.permissions){beginWatch();return}navigator.permissions.query({name:'geolocation'}).then(p=>{if(p.state==='denied'){showNotice('Platstillgång är blockerad. Tillåt platsåtkomst i webbläsarens inställningar.');stopAudio();return}beginWatch()}).catch(beginWatch)}
+  function beginWatch(){watchId=navigator.geolocation.watchPosition(onPosition,e=>{const msgs={1:'Platstillgång nekades. Tillåt platsåtkomst för den här sidan.',2:'GPS-positionen kan inte hämtas just nu. Försök igen utomhus.',3:'GPS tog för lång tid. Kontrollera mottagningen och försök igen.'};showNotice(msgs[e.code]||'Ett fel uppstod när GPS-positionen hämtades.');setState('GPS ej tillgänglig');stop()}, {enableHighAccuracy:true,maximumAge:1000,timeout:20000});$('startBtn').textContent='Följer din position';$('startBtn').disabled=true;$('stopBtn').classList.add('show');setState('Söker GPS …',true)}
+  function onPosition(pos){const here={lat:pos.coords.latitude,lon:pos.coords.longitude};let best={dist:Infinity};for(let i=0;i<route.length-1;i++){const cand=nearestOnSegment(here,route[i],route[i+1]);if(cand.dist<best.dist){best={...cand,index:i}}}const accuracy=pos.coords.accuracy||30;let pan=0;if(best.dist>accuracy*1.5+8){const magnitude=Math.min(1,(best.dist-accuracy*.5)/55);pan=(best.cross<0?1:-1)*magnitude}updatePan(pan);const pct=Math.max(0,Math.min(100,((best.index+best.t)/(route.length-1))*100));$('progressFill').style.width=`${pct}%`;$('distanceLabel').textContent=best.dist<=accuracy*1.5+8?'På rutten':`${fmtDistance(best.dist)} från rutten`;
+    const svg=$('mapRoute').ownerSVGElement,vb=svg.viewBox.baseVal,w=vb.width,h=vb.height;const bounds={minLat:Math.min(...route.map(p=>p.lat)),maxLat:Math.max(...route.map(p=>p.lat)),minLon:Math.min(...route.map(p=>p.lon)),maxLon:Math.max(...route.map(p=>p.lon))};const mid=(bounds.minLat+bounds.maxLat)/2*Math.PI/180,spanLon=(bounds.maxLon-bounds.minLon)*Math.max(.1,Math.cos(mid)),spanLat=bounds.maxLat-bounds.minLat,scale=Math.min((w-80)/(spanLon||.00001),(h-80)/(spanLat||.00001));const x=w/2+(best.point.lon-(bounds.minLon+bounds.maxLon)/2)*Math.cos(mid)*scale,y=h/2-(best.point.lat-(bounds.minLat+bounds.maxLat)/2)*scale;$('mapUser').setAttribute('cx',x);$('mapUser').setAttribute('cy',y);$('mapPulse').setAttribute('cx',x);$('mapPulse').setAttribute('cy',y);setState(best.dist<=accuracy*1.5+8?'På rutten':'Justera riktningen',true)}
+  function stopAudio(){if(oscillator){try{oscillator.stop()}catch{}oscillator.disconnect();oscillator=null}if(audioCtx){audioCtx.close();audioCtx=null}gain=null;panNode=null;updatePan(0)}
+  function stop(){if(watchId!==null){navigator.geolocation.clearWatch(watchId);watchId=null}stopAudio();$('startBtn').disabled=!route.length;$('startBtn').textContent=route.length?'Börja följa rutten':'Välj en rutt för att börja';$('stopBtn').classList.remove('show');if(route.length)setState('Pausad')}
+  $('startBtn').addEventListener('click',start);$('stopBtn').addEventListener('click',stop);
+})();
+</script>
+</body>
+</html>
